@@ -1,0 +1,31 @@
+public String getTeamColor() {
+        return this.teamColor;
+    }
+//Add this in Unit first ^^^
+
+public class Team {
+    String teamColor;
+    ArrayList<Unit> teamUnits = new ArrayList<Unit>();
+    public Team(String teamColor, ArrayList<Unit> teamUnits) {
+        this.teamColor = teamColor;
+        this.teamUnits = teamUnits;
+    }
+
+    public String getTeamColor() {
+        return teamColor;
+    }
+    public ArrayList<Unit> getTeamUnits() {
+        return teamUnits;
+    }
+    public void removeUnitsFromTeam(Unit unit1) {
+        teamUnits.remove(unit1);
+    }
+    public void addUnitsToTeam(Unit unit2) {
+        teamUnits.add(unit2);
+        unit2.teamColor = this.teamColor;
+    }
+    @Override
+    public String toString(){
+        return "Team " + this.teamColor + " Units: " + teamUnits.toString();
+    }
+}
