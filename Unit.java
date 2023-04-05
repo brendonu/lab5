@@ -92,5 +92,10 @@ public abstract class Unit {
     public void setTeamColor(String newTeamColor){this.teamColor = newTeamColor;}
 
     public abstract Unit spawn();
+   
+    @Override
+    public String toString() {
+        return this.teamColor + " " + this.symbol;
+    }
 
 }
