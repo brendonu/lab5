@@ -1,0 +1,110 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+public class PlayerTest {
+    @Test
+    public void getPlayerNumber() {
+// Unit tests for getPlayerNumber method
+        Player p1 = new Player(1, true, new TomJerryUnit());
+        Player p2 = new Player(2, new TomJerryUnit());
+        Player p3 = new Player();
+        assertEquals(1, p1.getPlayerNumber());
+        assertEquals(2, p2.getPlayerNumber());
+        assertEquals(1, p3.getPlayerNumber());
+    }
+
+    @Test
+    public void setPlayerNumber() {
+// Unit tests for setPlayerNumber method
+        Player p1 = new Player(1, true, new TomJerryUnit());
+        Player p2 = new Player(2, new TomJerryUnit());
+        Player p3 = new Player();
+        p1.setPlayerNumber(3);
+        p2.setPlayerNumber(4);
+        p3.setPlayerNumber(5);
+        assertEquals(3, p1.getPlayerNumber());
+        assertEquals(4, p2.getPlayerNumber());
+        assertEquals(5, p3.getPlayerNumber());
+    }
+
+    @Test
+    public void isTurn() {
+// Unit tests for isTurn method
+        Player p1 = new Player(1, true, new TomJerryUnit());
+        Player p2 = new Player(2, new TomJerryUnit());
+        Player p3 = new Player();
+        assertTrue(p1.isTurn());
+        assertFalse(p2.isTurn());
+        assertTrue(p3.isTurn());
+    }
+
+    @Test
+    public void setTurn() {
+// Unit tests for setTurn method
+        Player p1 = new Player(1, true, new TomJerryUnit());
+        Player p2 = new Player(2, new TomJerryUnit());
+        Player p3 = new Player();
+        p1.setTurn(false);
+        p2.setTurn(true);
+        p3.setTurn(false);
+        assertFalse(p1.isTurn());
+        assertTrue(p2.isTurn());
+        assertFalse(p3.isTurn());
+    }
+
+    @Test
+    public void getUnit() {
+// Unit tests for getUnit method
+        TomJerryUnit tj1 = new TomJerryUnit();
+        Player p1 = new Player(1, true, tj1);
+        TomJerryUnit tj2 = new TomJerryUnit();
+        Player p2 = new Player(2, tj2);
+        Player p3 = new Player();
+        assertEquals(tj1, p1.getUnit());
+        assertEquals(tj2, p2.getUnit());
+        assertEquals(this.unit, p3.getUnit())
+    }
+
+    @Test
+    public void setUnit() {
+// Unit tests for setUnit method
+        TomJerryUnit tj1 = new TomJerryUnit();
+        Player p1 = new Player(1, true, tj1);
+        TomJerryUnit tj2 = new TomJerryUnit();
+        Player p2 = new Player(2, tj2);
+        TomJerryUnit tj3 = new TomJerryUnit();
+        Player p3 = new Player();
+        p1.setUnit(tj2);
+        p2.setUnit(tj1);
+        p3.setUnit(tj3);
+        assertEquals(tj2, p1.getUnit());
+        assertEquals(tj1, p2.getUnit());
+        assertEquals(tj3, p3.getUnit());
+    }
+
+    @Test
+    public void testingPlayerThreeParameterConstructor() {
+// Unit tests for 3 parameter constructor
+        System.out.println("Creating Player with 3 parameter constructor");
+        Player p = new Player(2, true, new TomJerryUnit());
+        assertEquals(2, p.getPlayerNumber(), 0.0001);
+        assertTrue(p.isTurn());
+    }
+
+    @Test
+    public void testingPlayerTwoParameterConstructor() {
+// Unit tests for 2 parameter constructor
+        System.out.println("Creating Player with 2 parameter constructor");
+        Player p = new Player(3, new TomJerryUnit());
+        assertEquals(3, p.getPlayerNumber(), 0.0001);
+        assertFalse(p.isTurn());
+    }
+
+    @Test
+    public void testingPlayerNoParameterConstructor() {
+// Unit tests for no parameter constructor
+        System.out.println("Creating Player with no parameter constructor");
+        Player p = new Player();
+        assertEquals(1, p.getPlayerNumber(), 0.0001);
+        assertTrue(p.isTurn());
+    }
+}
