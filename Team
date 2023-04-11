@@ -1,29 +1,45 @@
-public String getTeamColor() {
-        return this.teamColor;
-    }
-//Add this in Unit first ^^^
-
+import java.util.ArrayList;
 public class Team {
+    /**
+     * <h1>Lab5</h1>
+     * <h2>Cisc 181-010L Spring 2023</h2>
+     * <h3>University of Delaware</h3>
+     * This class creates the team that will represent a player's set of units
+     *
+     * @author Brendon Uzoigwe, Zachary Villamor, Christopher Sullivan
+     * @since 2023-04-09
+     */
+
+    //member fields for the class
     String teamColor;
     ArrayList<Unit> teamUnits = new ArrayList<Unit>();
+
+    //constructor that sets the member fields
     public Team(String teamColor, ArrayList<Unit> teamUnits) {
         this.teamColor = teamColor;
         this.teamUnits = teamUnits;
     }
 
+    //getter methods
     public String getTeamColor() {
         return teamColor;
     }
     public ArrayList<Unit> getTeamUnits() {
         return teamUnits;
     }
+
+    //method that accepts a unit and removes it
     public void removeUnitsFromTeam(Unit unit1) {
         teamUnits.remove(unit1);
     }
+
+    //mutator that accepts a unit and adds it to the team
     public void addUnitsToTeam(Unit unit2) {
         teamUnits.add(unit2);
         unit2.teamColor = this.teamColor;
     }
+
+    //toString method that returns the teams color abd units
     @Override
     public String toString(){
         return "Team " + this.teamColor + " Units: " + teamUnits.toString();
