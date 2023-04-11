@@ -1,9 +1,21 @@
-import java.util.Random;
+import java.lang.Math;
 public class GameBoard {
+    /**
+     * <h1>Lab5</h1>
+     * <h2>Cisc 181-010L Spring 2023</h2>
+     * <h3>University of Delaware</h3>
+     * This class creates the board that the game will be played on
+     *
+     * @author Brendon Uzoigwe, Zachary Villamor, Christopher Sullivan
+     * @since 2023-04-09
+     */
+
+    //properties for the board
     private int numRows;
     private int numColumns;
     private BoardSquare[][] squares;
 
+    //constructor that sets numRows and numColumns and creates a new 2d array
     public GameBoard(int numRows, int numColumns) {
         this.numRows = numRows;
         this.numColumns = numColumns;
@@ -11,6 +23,7 @@ public class GameBoard {
         setUpEmptyBoard();
     }
 
+    //getter methods
     public int getNumRows() {
         return this.numRows;
     }
@@ -23,6 +36,8 @@ public class GameBoard {
         return this.squares;
     }
 
+
+    //method that determines if the location of the space is in the boundaries of the board
     public boolean inBounds(int rowIndex, int columnIndex) {
         if (((rowIndex < 0) || (this.numRows < rowIndex + 1)) || ((columnIndex < 0) || (this.numColumns < columnIndex + 1))) {
             return false;
@@ -32,12 +47,14 @@ public class GameBoard {
         }
     }
 
+    //method that sets up the board with alternating black and white squares
     private void setUpEmptyBoard() {
         int row;
         int column;
         String color;
         for (row = 0; row < this.numRows; row++ ) {
             for (column = 0; column < this.numColumns; column++) {
+                //sets even spaces to black and odd spaces to white
                 if (((row + column) % 2) == 0) {
                     color = "black";
                 }
@@ -49,22 +66,25 @@ public class GameBoard {
         }
     }
 
-    public BoardSquare findRandomEmptySpace() {
-        Random rand = new Random();
-        int row;
-        int column;
-        int intRowIndex = 0;
-        int intColumnIndex = 0;
-        while (this.squares[intRowIndex][intColumnIndex].isEmpty() != true) {
-            double doubleRowIndex = Math.random() * this.numRows - 1;
-            intRowIndex = (int)doubleRowIndex;
-            double doubleColumnIndex = Math.random() * this.numColumns - 1;
-            intColumnIndex = (int)doubleColumnIndex;
+    //method that generates the location of a random space and returns it if the space is empty, if not then it keeps looking until it finds an empty one
+    public BoardSquare findRandomEmptySpace(){
+        double randRow = Math.random() * this.numRows - 1;
+        double randColumn = Math.random() * this.numColumns - 1;
+        int randRow2 = (int)randRow;
+        int randColumn2 = (int)randColumn;
+        BoardSquare emptySpace = squares[randRow2][randColumn2];
+        while(!squares[randRow2][randColumn2].isEmpty()) {
+            randRow = Math.random() * this.numRows - 1;
+            randColumn = Math.random() * this.numColumns - 1;
+            randRow2 = (int)randRow;
+            randColumn2 = (int)randColumn;
+            emptySpace = squares[randRow2][randColumn2];
         }
-        return this.squares[intRowIndex][intColumnIndex];
-    }
+        return emptySpace;
 
-    public String toString() {
+        }
+    //toString method for the game board
+    public String toString(){
         StringBuilder boardString = new StringBuilder();
         boardString.append("Col :       ");
 
@@ -81,4 +101,11 @@ public class GameBoard {
         }
         return boardString.toString();
     }
+
+
+
+
+
+
+
 }
