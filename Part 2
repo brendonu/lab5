@@ -1,0 +1,8 @@
+public class BartSimpsonUnit extends Recruiter{
+
+super(symbol, name, health, healthModifier, damage, damageModifier, luck, xCor, yCor, movement, movementModifier, teamColor, 0);
+}
+public class TomJerryUnit extends Attacker{
+
+super(symbol, name, health, healthModifier, damage, damageModifier, luck, xCor, yCor, movement, movementModifier, teamColor, 0);
+}
