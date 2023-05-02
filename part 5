@@ -1,0 +1,15 @@
+public abstract class Action {
+    protected Game game;
+    protected int rowIndexIs;
+    protected int columnIndexIs;
+    protected int rowIndexWould;
+    protected int columnIndexWould;
+    public Action(Game game, int rowIndexIs, int columnIndexIs, int rowIndexWould, int columnIndexWould){
+        this.game = game;
+        this.rowIndexIs = rowIndexIs;
+        this.columnIndexIs = columnIndexIs;
+        this.rowIndexWould = rowIndexWould;
+        this.columnIndexWould = columnIndexWould;
+    }
+    public abstract void performAction();
+}
